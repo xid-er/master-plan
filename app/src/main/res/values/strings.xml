@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Master Plan</string>
-    <string name="title_home">Habits</string>
-    <string name="title_dashboard">Calories</string>
-    <string name="title_notifications">Chores</string>
+    <string name="title_habits">Habits</string>
+    <string name="title_calories">Calories</string>
+    <string name="title_chores">Chores</string>
+    <string name="add_button">Add button</string>
 </resources>

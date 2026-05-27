@@ -1,13 +1,13 @@
-package com.example.masterplan.ui.dashboard
+package com.example.masterplan.ui.calories
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class DashboardViewModel : ViewModel() {
+class CaloriesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+        value = "This is calories Fragment"
     }
     val text: LiveData<String> = _text
 }
