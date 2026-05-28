@@ -9,4 +9,6 @@
     <string name="random_result">🎲 %s</string>
     <string name="chore_hint">Enter chore name</string>
     <string name="remove_chore">Remove chore</string>
+    <string name="add_habit">Add Habit</string>
+    <string name="add_habit_2">Add habit</string>
 </resources>
