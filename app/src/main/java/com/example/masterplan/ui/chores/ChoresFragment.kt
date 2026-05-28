@@ -18,7 +18,7 @@ class ChoresFragment : Fragment() {
     private var _binding: FragmentChoresBinding? = null
     private val binding get() = _binding!!
 
-    private val adapter = ChoresAdapter()
+    private val adapter = ChoresAdapter { id -> viewModel.deleteChore(id) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,7 +29,7 @@ class ChoresFragment : Fragment() {
         binding.recyclerChores.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerChores.adapter = adapter
 
-        viewModel.chores.observe(viewLifecycleOwner) { adapter.submitList(it.map { c -> c.name }) }
+        viewModel.chores.observe(viewLifecycleOwner) { adapter.submitList(it) }
 
         viewModel.randomChore.observe(viewLifecycleOwner) { chore ->
             binding.textRandomResult.visibility = if (chore != null) View.VISIBLE else View.GONE

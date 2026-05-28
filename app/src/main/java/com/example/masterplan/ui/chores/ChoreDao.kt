@@ -12,4 +12,7 @@ interface ChoreDao {
 
     @Insert
     suspend fun insert(chore: Chore)
+
+    @Query("DELETE FROM chores WHERE id = :id")
+    suspend fun deleteById(id: Int)
 }

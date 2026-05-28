@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class CaloriesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is calories Fragment"
+        value = "Your calories will be here"
     }
     val text: LiveData<String> = _text
 }

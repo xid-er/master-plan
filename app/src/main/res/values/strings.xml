@@ -8,4 +8,5 @@
     <string name="pick_random_chore">Pick Random Chore</string>
     <string name="random_result">🎲 %s</string>
     <string name="chore_hint">Enter chore name</string>
+    <string name="remove_chore">Remove chore</string>
 </resources>

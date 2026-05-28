@@ -21,6 +21,10 @@ class ChoresViewModel(app: Application) : AndroidViewModel(app) {
         dao.insert(Chore(name = name))
     }
 
+    fun deleteChore(id: Int) = viewModelScope.launch {
+        dao.deleteById(id)
+    }
+
     fun pickRandom() {
         _randomChore.value = chores.value?.randomOrNull()?.name
     }
