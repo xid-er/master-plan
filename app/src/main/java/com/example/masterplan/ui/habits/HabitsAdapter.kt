@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -42,11 +43,15 @@ class HabitsAdapter(
         if (done) {
             holder.name.paintFlags = holder.name.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             holder.name.alpha = 0.45f
-            holder.card.setCardBackgroundColor(0xFFF3E5FF.toInt())
+            holder.card.setCardBackgroundColor(
+                ContextCompat.getColor(holder.card.context, R.color.habit_card_done_background)
+            )
         } else {
             holder.name.paintFlags = holder.name.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
             holder.name.alpha = 1f
-            holder.card.setCardBackgroundColor(0xFFFFFFFF.toInt())
+            holder.card.setCardBackgroundColor(
+                ContextCompat.getColor(holder.card.context, R.color.habit_card_background)
+            )
         }
 
         holder.card.setOnClickListener { onToggle(habit) }

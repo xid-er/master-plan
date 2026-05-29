@@ -8,4 +8,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="surface">#FFF8F4FF</color>
+
+    <!-- Habit Card Colors -->
+    <color name="habit_card_background">#FFFFFF</color>
+    <color name="habit_card_done_background">#F3E5FF</color>
 </resources>
