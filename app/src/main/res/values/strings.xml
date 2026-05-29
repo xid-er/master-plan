@@ -12,4 +12,13 @@
     <string name="add_habit">Add Habit</string>
     <string name="add_habit_2">Add habit</string>
     <string name="delete_habit">Delete habit</string>
+
+    <string name="calorie_goal">Goal:  </string>
+    <string name="kcal_remaining">kcal remaining</string>
+    <string name="add_meal">Add Meal</string>
+    <string name="add_exercise">Add Exercise</string>
+    <string name="set_daily_goal">Set Daily Goal</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="add">Add</string>
 </resources>

@@ -8,7 +8,7 @@
 
     <item
         android:id="@+id/navigation_calories"
-        android:icon="@drawable/ic_calories"
+        android:icon="@drawable/ic_fork_spoon"
         android:title="@string/title_calories" />
 
     <item
