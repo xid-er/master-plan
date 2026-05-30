@@ -27,4 +27,7 @@
     <color name="onSurface">@color/black</color>
     <color name="onError">@color/white</color>
     <color name="controlNormal">@color/black</color>
+
+    <color name="textPrimary">@color/black</color>
+    <color name="textSecondary">#B3000000</color>
 </resources>
