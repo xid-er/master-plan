@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.view.inputmethod.EditorInfo
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.masterplan.R
+import com.example.masterplan.databinding.DialogGenericInputBinding
 import com.example.masterplan.databinding.FragmentChoresBinding
 
 class ChoresFragment : Fragment() {
@@ -43,16 +44,29 @@ class ChoresFragment : Fragment() {
     }
 
     private fun showAddDialog() {
-        val input = EditText(requireContext()).apply { hint = getString(R.string.chore_hint) }
-        AlertDialog.Builder(requireContext())
+        val dialogBinding = DialogGenericInputBinding.inflate(layoutInflater)
+        dialogBinding.textInputLayout.hint = getString(R.string.chore_hint)
+
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle(R.string.add_chore)
-            .setView(input)
+            .setView(dialogBinding.root)
             .setPositiveButton(android.R.string.ok) { _, _ ->
-                val text = input.text.toString().trim()
+                val text = dialogBinding.editInput.text.toString().trim()
                 if (text.isNotEmpty()) viewModel.addChore(text)
             }
             .setNegativeButton(android.R.string.cancel, null)
-            .show()
+            .create()
+
+        dialog.window?.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        dialog.show()
+        dialogBinding.editInput.requestFocus()
+
+        dialogBinding.editInput.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
+                true
+            } else false
+        }
     }
 
     override fun onDestroyView() {

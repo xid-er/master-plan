@@ -6,11 +6,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.LinearLayout
+import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.masterplan.R
+import com.example.masterplan.databinding.DialogAddCalorieEntryBinding
 import com.example.masterplan.databinding.FragmentCaloriesBinding
 import java.util.Locale
 
@@ -57,44 +57,58 @@ class CaloriesFragment : Fragment() {
     }
 
     private fun showEditGoalDialog() {
-        val input = EditText(requireContext()).apply {
-            hint = "2000"
-            inputType = android.text.InputType.TYPE_CLASS_NUMBER
-        }
-        AlertDialog.Builder(requireContext())
+        val dialogBinding = DialogAddCalorieEntryBinding.inflate(layoutInflater)
+        dialogBinding.textInputLayoutName.visibility = View.GONE
+        dialogBinding.textInputLayoutCalories.hint = getString(R.string.set_daily_goal)
+        dialogBinding.editCalories.setText("")
+        dialogBinding.editCalories.hint = "2000"
+        
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle(R.string.set_daily_goal)
-            .setView(input)
+            .setView(dialogBinding.root)
             .setPositiveButton(R.string.save) { _, _ ->
-                val goal = input.text.toString().toIntOrNull() ?: return@setPositiveButton
+                val goal = dialogBinding.editCalories.text.toString().toIntOrNull() ?: return@setPositiveButton
                 viewModel.setGoal(goal)
             }
             .setNegativeButton(R.string.cancel, null)
-            .show()
+            .create()
+
+        dialog.window?.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        dialog.show()
+        dialogBinding.editCalories.requestFocus()
+        
+        dialogBinding.editCalories.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
+                true
+            } else false
+        }
     }
 
     private fun showAddEntryDialog(type: EntryType) {
-        val layout = LinearLayout(requireContext()).apply {
-            orientation = LinearLayout.VERTICAL
-            setPadding(50, 20, 50, 0)
-        }
-        val nameInput = EditText(requireContext()).apply { hint = "Name (e.g. Lunch)" }
-        val calInput = EditText(requireContext()).apply {
-            hint = "Calories"
-            inputType = android.text.InputType.TYPE_CLASS_NUMBER
-        }
-        layout.addView(nameInput)
-        layout.addView(calInput)
-
-        AlertDialog.Builder(requireContext())
+        val dialogBinding = DialogAddCalorieEntryBinding.inflate(layoutInflater)
+        
+        val dialog = AlertDialog.Builder(requireContext())
             .setTitle(if (type == EntryType.MEAL) R.string.add_meal else R.string.add_exercise)
-            .setView(layout)
+            .setView(dialogBinding.root)
             .setPositiveButton(R.string.add) { _, _ ->
-                val name = nameInput.text.toString().ifBlank { "Untitled" }
-                val calories = calInput.text.toString().toIntOrNull() ?: 0
+                val name = dialogBinding.editName.text.toString().ifBlank { "Untitled" }
+                val calories = dialogBinding.editCalories.text.toString().toIntOrNull() ?: 0
                 viewModel.addEntry(name, calories, type)
             }
             .setNegativeButton(R.string.cancel, null)
-            .show()
+            .create()
+
+        dialog.window?.setSoftInputMode(android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE)
+        dialog.show()
+        dialogBinding.editName.requestFocus()
+
+        dialogBinding.editCalories.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick()
+                true
+            } else false
+        }
     }
 
     override fun onDestroyView() {

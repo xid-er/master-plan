@@ -8,8 +8,23 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="surface">#FFF8F4FF</color>
+    <color name="background_night">#121212</color>
 
-    <!-- Habit Card Colors -->
+    <!-- Habit Card Colours -->
     <color name="habit_card_background">#FFFFFF</color>
     <color name="habit_card_done_background">#F3E5FF</color>
+    <!-- Semantic Colours Light -->
+    <color name="primary">@color/purple_800</color>
+    <color name="primaryVariant">@color/purple_900</color>
+    <color name="secondary">@color/purple_500</color>
+    <color name="secondaryVariant">@color/purple_700</color>
+    <color name="background_color">@color/surface</color>
+    <color name="surface_color">@color/white</color>
+    <color name="error_color">#B00020</color>
+    <color name="onPrimary">@color/white</color>
+    <color name="onSecondary">@color/white</color>
+    <color name="onBackground">@color/black</color>
+    <color name="onSurface">@color/black</color>
+    <color name="onError">@color/white</color>
+    <color name="controlNormal">@color/black</color>
 </resources>

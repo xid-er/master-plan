@@ -1,11 +1,37 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
+    <!-- Base application theme. -->
     <style name="Theme.MasterPlan" parent="Theme.MaterialComponents.NoActionBar">
-        <item name="colorPrimary">@color/purple_700</item>
-        <item name="colorPrimaryVariant">@color/purple_900</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/purple_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/purple_900</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryVariant</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondaryVariant</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+
+        <item name="colorSurface">@color/surface_color</item>
+        <item name="colorOnSurface">@color/onSurface</item>
+        <item name="colorError">@color/error_color</item>
+        <item name="colorOnError">@color/onError</item>
+        <item name="colorControlNormal">@color/controlNormal</item>
+        <item name="android:windowBackground">@color/background_color</item>
+
+        <item name="android:textColorPrimary">@color/textPrimary</item>
+        <item name="android:textColorSecondary">@color/textSecondary</item>
         <item name="actionBarStyle">@style/AppActionBar</item>
+        <item name="alertDialogTheme">@style/ThemeOverlay.MaterialComponents.MaterialAlertDialog</item>
+    </style>
+
+    <style name="AppActionBar" parent="Widget.MaterialComponents.ActionBar.Solid">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="titleTextStyle">@style/AppActionBarTitle</item>
+    </style>
+
+    <style name="AppActionBarTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

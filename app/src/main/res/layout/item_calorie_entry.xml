@@ -31,7 +31,7 @@
             android:layout_marginStart="12dp"
             android:layout_weight="1"
             android:textSize="16sp"
-            app:tint="?android:attr/textColorPrimary"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="Lunch" />
 
         <TextView
@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:textStyle="bold"
+            android:textColor="?android:attr/textColorPrimary"
             tools:text="+450 kcal" />
 
         <ImageButton
@@ -49,7 +50,7 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/remove_chore"
             android:src="@android:drawable/ic_menu_delete"
-            app:tint="#888888" />
+            app:tint="#F44336" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

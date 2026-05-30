@@ -33,11 +33,9 @@ class CalorieEntriesAdapter(private val onDelete: (Int) -> Unit) :
         
         if (entry.type == EntryType.MEAL) {
             holder.calories.text = "+${entry.calories} kcal"
-            holder.calories.setTextColor(0xFF4CAF50.toInt()) // Green
             holder.icon.setImageResource(android.R.drawable.ic_menu_add) 
         } else {
             holder.calories.text = "-${entry.calories} kcal"
-            holder.calories.setTextColor(0xFFF44336.toInt()) // Red
             holder.icon.setImageResource(android.R.drawable.ic_media_play)
         }
 
